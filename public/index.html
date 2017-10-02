@@ -72,5 +72,13 @@
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
     <script type="text/javascript" src="//cdn.rawgit.com/feathersjs/feathers-client/v1.1.0/dist/feathers.js"></script>
+
+    <script>
+      socket = io('http://localhost:3030', { transports: ['websocket'] })
+      client = feathers()
+        .configure(feathers.hooks())
+        .configure(feathers.socketio(socket))
+        .configure(feathers.authentication({ storage: window.localStorage }))
+    </script>
   </body>
 </html>
